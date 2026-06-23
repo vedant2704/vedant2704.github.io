@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vedant Mahadik — Security Engineer & Full-Stack Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0A0F1E;
+    --card: #111827;
+    --violet: #7C3AED;
+    --cyan: #00D4FF;
+    --offwhite: #F0EEF8;
+    --muted: #8B9CC5;
+    --border: rgba(124,58,237,0.25);
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--navy); color: var(--offwhite); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2.5rem; background: rgba(10,15,30,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--offwhite); letter-spacing: -0.02em; }
+  .nav-logo span { color: var(--violet); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--cyan); }
+
+  section { padding: 6rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+
+  #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 8rem; max-width: 100%; padding-left: 6vw; padding-right: 6vw; }
+  .hero-eyebrow { font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan); font-weight: 500; margin-bottom: 1.5rem; }
+  .hero-name { font-family: 'Space Grotesk', sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 700; line-height: 1.0; letter-spacing: -0.04em; color: var(--offwhite); margin-bottom: 1rem; }
+  .hero-role { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 500; letter-spacing: -0.02em; height: 2.4rem; overflow: hidden; margin-bottom: 2rem; }
+  .hero-role-inner { display: flex; flex-direction: column; animation: roleFlip 4s infinite; }
+  .role-a { color: var(--violet); }
+  .role-b { color: var(--cyan); }
+  @keyframes roleFlip {
+    0%,40% { transform: translateY(0); }
+    50%,90% { transform: translateY(-2.4rem); }
+    100% { transform: translateY(0); }
+  }
+  .hero-sub { color: var(--muted); max-width: 540px; font-size: 1rem; margin-bottom: 2.5rem; line-height: 1.8; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--violet); color: #fff; padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; transition: background 0.2s, transform 0.1s; border: none; cursor: pointer; }
+  .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
+  .btn-outline { border: 1px solid var(--border); color: var(--offwhite); padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; transition: border-color 0.2s, color 0.2s; }
+  .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+  .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+  .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--offwhite); }
+  .stat-num span { color: var(--violet); }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; letter-spacing: 0.05em; }
+
+  .section-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan); font-weight: 500; margin-bottom: 1rem; }
+  .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.03em; color: var(--offwhite); margin-bottom: 2rem; line-height: 1.15; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
+  .about-text p strong { color: var(--offwhite); font-weight: 500; }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+  .tag { background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); color: #c4b5fd; padding: 0.3rem 0.75rem; border-radius: 4px; font-size: 0.8rem; font-family: 'Space Grotesk', sans-serif; font-weight: 500; }
+  .about-highlights { display: flex; flex-direction: column; gap: 1rem; }
+  .highlight-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.5rem; }
+  .highlight-icon { font-size: 1.25rem; margin-bottom: 0.5rem; }
+  .highlight-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--offwhite); margin-bottom: 0.25rem; }
+  .highlight-desc { font-size: 0.82rem; color: var(--muted); }
+
+  #skills { background: var(--card); max-width: 100%; padding: 6rem 6vw; }
+  .skills-inner { max-width: 1100px; margin: 0 auto; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .skill-group { background: var(--navy); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; }
+  .skill-group-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--cyan); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; }
+  .skill-list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .skill-item { display: flex; justify-content: space-between; align-items: center; }
+  .skill-name { font-size: 0.875rem; color: var(--offwhite); }
+  .skill-bar-wrap { width: 80px; height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+  .skill-bar { height: 100%; border-radius: 2px; background: var(--violet); }
+  .skill-bar.cyan { background: var(--cyan); }
+
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; transition: border-color 0.2s, transform 0.2s; position: relative; overflow: hidden; }
+  .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--violet), var(--cyan)); opacity: 0; transition: opacity 0.2s; }
+  .project-card:hover { border-color: rgba(124,58,237,0.5); transform: translateY(-3px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-type { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; margin-bottom: 0.75rem; }
+  .project-type.security { color: var(--violet); }
+  .project-type.fullstack { color: var(--cyan); }
+  .project-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--offwhite); margin-bottom: 0.75rem; letter-spacing: -0.02em; }
+  .project-desc { font-size: 0.875rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.6; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+  .stack-pill { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--muted); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-family: 'Space Grotesk', sans-serif; }
+  .project-link { font-size: 0.8rem; color: var(--violet); text-decoration: none; font-weight: 600; }
+  .project-link:hover { color: var(--cyan); }
+
+  .exp-timeline { margin-top: 3rem; display: flex; flex-direction: column; gap: 0; }
+  .exp-item { display: grid; grid-template-columns: 180px 1px 1fr; gap: 0 2rem; padding-bottom: 2.5rem; }
+  .exp-date { text-align: right; padding-top: 0.1rem; }
+  .exp-date-text { font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+  .exp-line { position: relative; }
+  .exp-line::before { content: ''; position: absolute; top: 0.6rem; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; border-radius: 50%; background: var(--violet); border: 2px solid var(--navy); }
+  .exp-line::after { content: ''; position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%); width: 1px; height: calc(100% - 1rem); background: var(--border); }
+  .exp-item:last-child .exp-line::after { display: none; }
+  .exp-role { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--offwhite); letter-spacing: -0.02em; }
+  .exp-company { font-size: 0.85rem; color: var(--violet); font-weight: 500; margin: 0.2rem 0 0.6rem; }
+  .exp-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+  .exp-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+  .exp-badge { background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.25); color: #c4b5fd; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.72rem; font-family: 'Space Grotesk', sans-serif; font-weight: 500; }
+
+  #contact { background: var(--card); max-width: 100%; padding: 6rem 6vw; }
+  .contact-inner { max-width: 1100px; margin: 0 auto; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+  .contact-intro { font-size: 0.95rem; color: var(--muted); line-height: 1.8; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .contact-link { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--offwhite); font-size: 0.9rem; transition: color 0.2s; }
+  .contact-link:hover { color: var(--cyan); }
+  .contact-link-icon { width: 36px; height: 36px; background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-field label { font-size: 0.8rem; color: var(--muted); font-weight: 500; letter-spacing: 0.05em; }
+  .form-field input, .form-field textarea { background: var(--navy); border: 1px solid var(--border); color: var(--offwhite); padding: 0.7rem 1rem; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.875rem; outline: none; transition: border-color 0.2s; resize: vertical; }
+  .form-field input:focus, .form-field textarea:focus { border-color: var(--violet); }
+  .form-field textarea { min-height: 110px; }
+  .form-submit { background: var(--violet); color: #fff; border: none; padding: 0.8rem 1.75rem; border-radius: 8px; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; align-self: flex-start; transition: background 0.2s; }
+  .form-submit:hover { background: #6d28d9; }
+
+  footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border); }
+
+  @media (max-width: 700px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1rem; }
+    section { padding: 4rem 1.25rem; }
+    #hero, #skills, #contact { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    .exp-item { grid-template-columns: 90px 1px 1fr; gap: 0 1rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">VM<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div id="hero">
+  <p class="hero-eyebrow">Available for opportunities · Mumbai, India</p>
+  <h1 class="hero-name">Vedant<br/>Mahadik</h1>
+  <div class="hero-role">
+    <div class="hero-role-inner">
+      <div class="role-a">Security Engineer</div>
+      <div class="role-b">Full-Stack Developer</div>
+    </div>
+  </div>
+  <p class="hero-sub">Final-year ECS undergrad who's traced malware at Maharashtra Cyber and shipped end-to-end encrypted web apps. I live at the intersection of breaking systems and building them.</p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn-primary">View my work</a>
+    <a href="#contact" class="btn-outline">Get in touch</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">3<span>+</span></div>
+      <div class="stat-label">Projects shipped</div>
+    </div>
+    <div>
+      <div class="stat-num">1<span>yr</span></div>
+      <div class="stat-label">Govt. cyber internship</div>
+    </div>
+    <div>
+      <div class="stat-num">2<span>×</span></div>
+      <div class="stat-label">Domain expertise</div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <p class="section-label">About</p>
+  <h2 class="section-title">Both sides of the firewall.</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a final-year <strong>Electronics & Computer Science</strong> student at Mumbai, building at the intersection of cybersecurity and full-stack engineering.</p>
+      <p>My time at <strong>Maharashtra Cyber</strong> — the Government of Maharashtra's cybercrime unit — gave me hands-on exposure to log analysis, OSINT pipelines, and malware reverse engineering. That defensive mindset now informs how I build: every app I ship, I've thought about how I'd attack it first.</p>
+      <p>On the dev side, I build real-time, auth-hardened web apps: encrypted chat, collaborative editors, expense trackers — things that actually run.</p>
+      <div class="about-tags">
+        <span class="tag">OSINT</span>
+        <span class="tag">Malware Analysis</span>
+        <span class="tag">Log Analysis</span>
+        <span class="tag">AES-256</span>
+        <span class="tag">WebRTC</span>
+        <span class="tag">JWT Auth</span>
+        <span class="tag">CRDT Sync</span>
+        <span class="tag">React</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">MongoDB</span>
+      </div>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-card">
+        <div class="highlight-icon">🛡️</div>
+        <div class="highlight-title">Maharashtra Cyber Internship</div>
+        <div class="highlight-desc">Worked within the Government of Maharashtra's cybercrime unit — log analysis, OSINT pipelines, malware samples.</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🔐</div>
+        <div class="highlight-title">Security-first engineering</div>
+        <div class="highlight-desc">Built SecureChat with AES-256 encryption and WebRTC — designed the threat model before writing a single line.</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">⚡</div>
+        <div class="highlight-title">Real-time systems</div>
+        <div class="highlight-desc">CollabDocs features CRDT-based sync, JWT auth, and role-based permissions — built for conflict-free collaboration at scale.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="skills">
+  <div class="skills-inner">
+    <p class="section-label">Skills</p>
+    <h2 class="section-title">Stack & arsenal.</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Security</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-name">OSINT & Recon</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Log Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Malware Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Cryptography</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">UNIX / CLI</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:82%"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Frontend</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-name">React</span><div class="skill-bar-wrap"><div class="skill-bar cyan" style="width:88%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">JavaScript</span><div class="skill-bar-wrap"><div class="skill-bar cyan" style="width:90%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">HTML / CSS</span><div class="skill-bar-wrap"><div class="skill-bar cyan" style="width:92%"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Backend</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-name">Node.js</span><div class="skill-bar-wrap"><div class="skill-bar cyan" style="width:82%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar cyan" style="width:80%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">MongoDB</span><div class="skill-bar-wrap"><div class="skill-bar cyan" style="width:78%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">SQL</span><div class="skill-bar-wrap"><div class="skill-bar cyan" style="width:72%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="projects">
+  <p class="section-label">Projects</p>
+  <h2 class="section-title">Things I've built.</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-type security">Security · Full-stack</div>
+      <div class="project-title">SecureChat</div>
+      <div class="project-desc">End-to-end encrypted real-time chat with AES-256 encryption and WebRTC peer connections. Threat-modelled before the first commit.</div>
+      <div class="project-stack">
+        <span class="stack-pill">WebRTC</span><span class="stack-pill">AES-256</span><span class="stack-pill">Node.js</span><span class="stack-pill">React</span><span class="stack-pill">Socket.io</span>
+      </div>
+      <a href="https://github.com/vedant2704" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="project-card">
+      <div class="project-type fullstack">Full-stack · Real-time</div>
+      <div class="project-title">CollabDocs</div>
+      <div class="project-desc">Real-time collaborative editor with CRDT-based conflict resolution, JWT auth, and role-based permission system.</div>
+      <div class="project-stack">
+        <span class="stack-pill">CRDT</span><span class="stack-pill">JWT</span><span class="stack-pill">React</span><span class="stack-pill">Node.js</span><span class="stack-pill">MongoDB</span>
+      </div>
+      <a href="https://github.com/vedant2704" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+    <div class="project-card">
+      <div class="project-type fullstack">Full-stack</div>
+      <div class="project-title">Expense Tracker</div>
+      <div class="project-desc">Personal finance tracker with visual analytics, category breakdowns, and data export — built with a clean, auth-protected API.</div>
+      <div class="project-stack">
+        <span class="stack-pill">React</span><span class="stack-pill">Node.js</span><span class="stack-pill">MongoDB</span><span class="stack-pill">Chart.js</span>
+      </div>
+      <a href="https://github.com/vedant2704" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <p class="section-label">Experience</p>
+  <h2 class="section-title">Where I've worked.</h2>
+  <div class="exp-timeline">
+    <div class="exp-item">
+      <div class="exp-date"><div class="exp-date-text">2023 – 2024</div></div>
+      <div class="exp-line"></div>
+      <div class="exp-content">
+        <div class="exp-role">Security Analyst Intern</div>
+        <div class="exp-company">Maharashtra Cyber · Government of Maharashtra</div>
+        <div class="exp-desc">Worked within the state government's cybercrime unit on active casework — log analysis for incident investigation, building OSINT pipelines, and static/dynamic malware analysis of samples from real cases.</div>
+        <div class="exp-badges"><span class="exp-badge">Log Analysis</span><span class="exp-badge">OSINT</span><span class="exp-badge">Malware Analysis</span><span class="exp-badge">Incident Response</span></div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date"><div class="exp-date-text">2022 – Present</div></div>
+      <div class="exp-line"></div>
+      <div class="exp-content">
+        <div class="exp-role">B.Tech — Electronics & CS Engineering</div>
+        <div class="exp-company">Mumbai University</div>
+        <div class="exp-desc">Final-year student with coursework spanning OS, networks, cryptography, data structures, and database systems. Built multiple production-grade full-stack projects alongside security coursework.</div>
+        <div class="exp-badges"><span class="exp-badge">Cryptography</span><span class="exp-badge">Networks</span><span class="exp-badge">OS</span><span class="exp-badge">DSA</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="contact">
+  <div class="contact-inner">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">Let's talk.</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-intro">Open to full-time roles in cybersecurity and full-stack engineering. Whether it's a job, a project, or just a conversation — I'm always up for it.</div>
+        <div class="contact-links">
+          <a href="mailto:mahadikvedant92@gmail.com" class="contact-link">
+            <div class="contact-link-icon">✉</div>
+            mahadikvedant92@gmail.com
+          </a>
+          <a href="https://github.com/vedant2704" class="contact-link" target="_blank">
+            <div class="contact-link-icon">⌥</div>
+            github.com/vedant2704
+          </a>
+          <a href="https://linkedin.com/in/vedantmahadik" class="contact-link" target="_blank">
+            <div class="contact-link-icon">in</div>
+            linkedin.com/in/vedantmahadik
+          </a>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="return false">
+        <div class="form-row">
+          <div class="form-field"><label>Name</label><input type="text" placeholder="Your name" /></div>
+          <div class="form-field"><label>Email</label><input type="email" placeholder="you@example.com" /></div>
+        </div>
+        <div class="form-field"><label>Message</label><textarea placeholder="What's on your mind?"></textarea></div>
+        <button class="form-submit" type="submit">Send message</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>Built by Vedant Mahadik · 2024 · Mumbai</footer>
+
+</body>
+</html>
