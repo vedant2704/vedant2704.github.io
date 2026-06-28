@@ -1,117 +1,50 @@
-# 🌐 Vedant Mahadik Portfolio
+# vedant2704.github.io
 
-Welcome to my personal portfolio website! This project showcases my skills, projects, education, and professional journey as an aspiring software engineer.
+Personal portfolio website — live at **[vedant2704.github.io](https://vedant2704.github.io)**
 
-## 🚀 About the Project
+## About
 
-This portfolio serves as a central hub for:
+Built to showcase my work across cybersecurity and full-stack development. Single-file, no frameworks, no build step.
 
-* 👨‍💻 My technical skills
-* 📚 Educational background
-* 🏗️ Featured projects
-* 📄 Resume and achievements
-* 📬 Contact information
+## Sections
 
-The goal is to provide recruiters, collaborators, and visitors with a quick overview of my work and capabilities.
+- **Hero** — intro with animated dual-role title
+- **About** — background and highlights
+- **Skills** — security, frontend, and backend stack
+- **Projects** — filterable by Security / Full-Stack
+- **Experience** — Maharashtra Cyber internship
+- **Education** — B.Tech, Mumbai University
+- **Contact** — Formspree-powered contact form
 
----
+## Tech
 
-## 🛠️ Tech Stack
+- HTML, CSS, JavaScript — no frameworks
+- Google Fonts (Space Grotesk + Inter)
+- Formspree for contact form
+- Hosted on GitHub Pages
 
-| Technology | Purpose          |
-| ---------- | ---------------- |
-| HTML5      | Structure        |
-| CSS3       | Styling & Layout |
-| JavaScript | Interactivity    |
-
----
-
-## ✨ Features
-
-* Responsive design
-* Clean and modern UI
-* Project showcase section
-* Skills overview
-* Contact information
-* Easy navigation
-
----
-
-## 📂 Project Structure
-
-```text
-Portfolio_web/
-│
-├── vedant_mahadik_portfolio.html
-└── README.md
-```
-
----
-
-## 🚀 Getting Started
-
-### Clone the repository
+## Local Development
 
 ```bash
-git clone https://github.com/vedant2704/Portfolio_web.git
+# Clone the repo
+git clone https://github.com/vedant2704/vedant2704.github.io.git
+
+# Open in VS Code
+code vedant2704.github.io
 ```
 
-### Navigate to the project
+Install the **Live Server** extension, then right-click `index.html` → Open with Live Server.
+
+## Updating
 
 ```bash
-cd Portfolio_web
+git add .
+git commit -m "describe your change"
+git push
 ```
 
-### Open the website
+Site updates within ~1 minute.
 
-Simply open:
+## Contact
 
-```text
-vedant_mahadik_portfolio.html
-```
-
-in your preferred browser.
-
----
-
-## 🎯 Future Improvements
-
-* Add dark mode
-* Add project filtering
-* Improve animations
-* Deploy custom domain
-* Add downloadable resume
-* Integrate contact form backend
-
----
-
-## 👨‍🎓 About Me
-
-I am **Vedant Mahadik**, a passionate developer interested in:
-
-* Full Stack Development
-* Web Technologies
-* Software Engineering
-* Problem Solving
-* Emerging Technologies
-
-I enjoy building projects that solve real-world problems and continuously expanding my technical knowledge.
-
----
-
-## 📫 Connect With Me
-
-* GitHub: https://github.com/vedant2704
-* LinkedIn: https://www.linkedin.com/in/vedant-mahadik1/
-* Email: mahadikvedant92@gmail.com
----
-
-## ⭐ Support
-
-If you found this project helpful, consider giving it a star on GitHub!
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License.
+**mahadikvedant92@gmail.com** · [github.com/vedant2704](https://github.com/vedant2704) · [linkedin.com/in/vedantmahadik](https://linkedin.com/in/vedantmahadik)
