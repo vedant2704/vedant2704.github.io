@@ -19,6 +19,7 @@
   html { scroll-behavior: smooth; }
   body { background: var(--navy); color: var(--offwhite); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; }
 
+  /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2.5rem; background: rgba(10,15,30,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
   .nav-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--offwhite); letter-spacing: -0.02em; }
   .nav-logo span { color: var(--violet); }
@@ -26,13 +27,22 @@
   .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover { color: var(--cyan); }
 
+  /* FADE-IN ANIMATION */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* SECTIONS */
   section { padding: 6rem 2.5rem; max-width: 1100px; margin: 0 auto; }
 
+  /* HERO */
   #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 8rem; max-width: 100%; padding-left: 6vw; padding-right: 6vw; }
-  .hero-eyebrow { font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan); font-weight: 500; margin-bottom: 1.5rem; }
-  .hero-name { font-family: 'Space Grotesk', sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 700; line-height: 1.0; letter-spacing: -0.04em; color: var(--offwhite); margin-bottom: 1rem; }
-  .hero-role { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 500; letter-spacing: -0.02em; height: 2.4rem; overflow: hidden; margin-bottom: 2rem; }
-  .hero-role-inner { display: flex; flex-direction: column; animation: roleFlip 4s infinite; }
+  .hero-eyebrow { font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan); font-weight: 500; margin-bottom: 1.5rem; animation: fadeUp 0.7s ease both; }
+  .hero-name { font-family: 'Space Grotesk', sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 700; line-height: 1.0; letter-spacing: -0.04em; color: var(--offwhite); margin-bottom: 1rem; animation: fadeUp 0.7s 0.1s ease both; }
+  .hero-role { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 500; letter-spacing: -0.02em; height: 2.4rem; overflow: hidden; margin-bottom: 2rem; animation: fadeUp 0.7s 0.2s ease both; }
+  .hero-role-inner { display: flex; flex-direction: column; animation: roleFlip 4s 1s infinite; }
   .role-a { color: var(--violet); }
   .role-b { color: var(--cyan); }
   @keyframes roleFlip {
@@ -40,30 +50,38 @@
     50%,90% { transform: translateY(-2.4rem); }
     100% { transform: translateY(0); }
   }
-  .hero-sub { color: var(--muted); max-width: 540px; font-size: 1rem; margin-bottom: 2.5rem; line-height: 1.8; }
-  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary { background: var(--violet); color: #fff; padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; transition: background 0.2s, transform 0.1s; border: none; cursor: pointer; }
-  .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
-  .btn-outline { border: 1px solid var(--border); color: var(--offwhite); padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; transition: border-color 0.2s, color 0.2s; }
-  .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
-  .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-sub { color: var(--muted); max-width: 540px; font-size: 1rem; margin-bottom: 2.5rem; line-height: 1.8; animation: fadeUp 0.7s 0.3s ease both; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.7s 0.4s ease both; }
+  .btn-primary { background: var(--violet); color: #fff; padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; border: none; cursor: pointer; }
+  .btn-primary:hover { background: #6d28d9; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,58,237,0.35); }
+  .btn-outline { border: 1px solid var(--border); color: var(--offwhite); padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; transition: border-color 0.2s, color 0.2s, transform 0.15s; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+  .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); animation: fadeUp 0.7s 0.5s ease both; }
   .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--offwhite); }
   .stat-num span { color: var(--violet); }
   .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; letter-spacing: 0.05em; }
 
+  /* ABOUT */
   .section-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan); font-weight: 500; margin-bottom: 1rem; }
   .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.03em; color: var(--offwhite); margin-bottom: 2rem; line-height: 1.15; }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
   .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
   .about-text p strong { color: var(--offwhite); font-weight: 500; }
   .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
-  .tag { background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); color: #c4b5fd; padding: 0.3rem 0.75rem; border-radius: 4px; font-size: 0.8rem; font-family: 'Space Grotesk', sans-serif; font-weight: 500; }
+  .tag { background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); color: #c4b5fd; padding: 0.3rem 0.75rem; border-radius: 4px; font-size: 0.8rem; font-family: 'Space Grotesk', sans-serif; font-weight: 500; transition: background 0.2s, border-color 0.2s; }
+  .tag:hover { background: rgba(124,58,237,0.28); border-color: rgba(124,58,237,0.55); }
   .about-highlights { display: flex; flex-direction: column; gap: 1rem; }
-  .highlight-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.5rem; }
+  .highlight-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.5rem; transition: transform 0.2s, border-color 0.2s; }
+  .highlight-card:hover { transform: translateX(4px); border-color: rgba(124,58,237,0.5); }
   .highlight-icon { font-size: 1.25rem; margin-bottom: 0.5rem; }
   .highlight-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--offwhite); margin-bottom: 0.25rem; }
   .highlight-desc { font-size: 0.82rem; color: var(--muted); }
 
+  /* SKILLS */
   #skills { background: var(--card); max-width: 100%; padding: 6rem 6vw; }
   .skills-inner { max-width: 1100px; margin: 0 auto; }
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
@@ -73,14 +91,22 @@
   .skill-item { display: flex; justify-content: space-between; align-items: center; }
   .skill-name { font-size: 0.875rem; color: var(--offwhite); }
   .skill-bar-wrap { width: 80px; height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
-  .skill-bar { height: 100%; border-radius: 2px; background: var(--violet); }
+  .skill-bar { height: 100%; border-radius: 2px; background: var(--violet); width: 0; transition: width 1s ease; }
   .skill-bar.cyan { background: var(--cyan); }
 
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-  .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; transition: border-color 0.2s, transform 0.2s; position: relative; overflow: hidden; }
+  /* PROJECT FILTER */
+  .filter-bar { display: flex; gap: 0.6rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .filter-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 0.4rem 1rem; border-radius: 20px; font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+  .filter-btn:hover { border-color: var(--violet); color: var(--offwhite); }
+  .filter-btn.active { background: var(--violet); border-color: var(--violet); color: #fff; }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; transition: border-color 0.2s, transform 0.25s, box-shadow 0.25s, opacity 0.3s; position: relative; overflow: hidden; }
   .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--violet), var(--cyan)); opacity: 0; transition: opacity 0.2s; }
-  .project-card:hover { border-color: rgba(124,58,237,0.5); transform: translateY(-3px); }
+  .project-card:hover { border-color: rgba(124,58,237,0.5); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
   .project-card:hover::before { opacity: 1; }
+  .project-card.hidden { opacity: 0; pointer-events: none; transform: scale(0.97); }
   .project-type { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; margin-bottom: 0.75rem; }
   .project-type.security { color: var(--violet); }
   .project-type.fullstack { color: var(--cyan); }
@@ -88,40 +114,48 @@
   .project-desc { font-size: 0.875rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.6; }
   .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
   .stack-pill { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--muted); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-family: 'Space Grotesk', sans-serif; }
-  .project-link { font-size: 0.8rem; color: var(--violet); text-decoration: none; font-weight: 600; }
+  .project-link { font-size: 0.8rem; color: var(--violet); text-decoration: none; font-weight: 600; transition: color 0.2s; }
   .project-link:hover { color: var(--cyan); }
 
-  .exp-timeline { margin-top: 3rem; display: flex; flex-direction: column; gap: 0; }
+  /* EXPERIENCE */
+  .exp-timeline { margin-top: 3rem; display: flex; flex-direction: column; }
   .exp-item { display: grid; grid-template-columns: 180px 1px 1fr; gap: 0 2rem; padding-bottom: 2.5rem; }
   .exp-date { text-align: right; padding-top: 0.1rem; }
   .exp-date-text { font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; color: var(--muted); font-weight: 500; }
   .exp-line { position: relative; }
-  .exp-line::before { content: ''; position: absolute; top: 0.6rem; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; border-radius: 50%; background: var(--violet); border: 2px solid var(--navy); }
+  .exp-line::before { content: ''; position: absolute; top: 0.6rem; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; border-radius: 50%; background: var(--violet); border: 2px solid var(--navy); transition: background 0.2s; }
+  .exp-item:hover .exp-line::before { background: var(--cyan); }
   .exp-line::after { content: ''; position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%); width: 1px; height: calc(100% - 1rem); background: var(--border); }
   .exp-item:last-child .exp-line::after { display: none; }
+  .exp-content { padding-top: 0; }
   .exp-role { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--offwhite); letter-spacing: -0.02em; }
   .exp-company { font-size: 0.85rem; color: var(--violet); font-weight: 500; margin: 0.2rem 0 0.6rem; }
   .exp-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
   .exp-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
   .exp-badge { background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.25); color: #c4b5fd; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.72rem; font-family: 'Space Grotesk', sans-serif; font-weight: 500; }
 
+  /* CONTACT */
   #contact { background: var(--card); max-width: 100%; padding: 6rem 6vw; }
   .contact-inner { max-width: 1100px; margin: 0 auto; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
   .contact-intro { font-size: 0.95rem; color: var(--muted); line-height: 1.8; }
   .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-  .contact-link { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--offwhite); font-size: 0.9rem; transition: color 0.2s; }
-  .contact-link:hover { color: var(--cyan); }
-  .contact-link-icon { width: 36px; height: 36px; background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+  .contact-link { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--offwhite); font-size: 0.9rem; transition: color 0.2s, transform 0.2s; }
+  .contact-link:hover { color: var(--cyan); transform: translateX(3px); }
+  .contact-link-icon { width: 36px; height: 36px; background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
   .contact-form { display: flex; flex-direction: column; gap: 1rem; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
   .form-field label { font-size: 0.8rem; color: var(--muted); font-weight: 500; letter-spacing: 0.05em; }
-  .form-field input, .form-field textarea { background: var(--navy); border: 1px solid var(--border); color: var(--offwhite); padding: 0.7rem 1rem; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.875rem; outline: none; transition: border-color 0.2s; resize: vertical; }
-  .form-field input:focus, .form-field textarea:focus { border-color: var(--violet); }
+  .form-field input, .form-field textarea { background: var(--navy); border: 1px solid var(--border); color: var(--offwhite); padding: 0.7rem 1rem; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.875rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; resize: vertical; }
+  .form-field input:focus, .form-field textarea:focus { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(124,58,237,0.15); }
   .form-field textarea { min-height: 110px; }
-  .form-submit { background: var(--violet); color: #fff; border: none; padding: 0.8rem 1.75rem; border-radius: 8px; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; align-self: flex-start; transition: background 0.2s; }
-  .form-submit:hover { background: #6d28d9; }
+  .form-submit { background: var(--violet); color: #fff; border: none; padding: 0.8rem 1.75rem; border-radius: 8px; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; align-self: flex-start; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; }
+  .form-submit:hover { background: #6d28d9; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124,58,237,0.35); }
+  .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .form-status { font-size: 0.85rem; margin-top: 0.5rem; min-height: 1.2rem; }
+  .form-status.success { color: var(--cyan); }
+  .form-status.error { color: #f87171; }
 
   footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border); }
 
@@ -146,10 +180,12 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <div id="hero">
   <p class="hero-eyebrow">Available for opportunities · Mumbai, India</p>
   <h1 class="hero-name">Vedant<br/>Mahadik</h1>
@@ -162,6 +198,10 @@
   <p class="hero-sub">Final-year ECS undergrad who's traced malware at Maharashtra Cyber and shipped end-to-end encrypted web apps. I live at the intersection of breaking systems and building them.</p>
   <div class="hero-cta">
     <a href="#projects" class="btn-primary">View my work</a>
+    <a href="resume.pdf" download class="btn-outline">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Resume
+    </a>
     <a href="#contact" class="btn-outline">Get in touch</a>
   </div>
   <div class="hero-stats">
@@ -180,28 +220,20 @@
   </div>
 </div>
 
+<!-- ABOUT -->
 <section id="about">
-  <p class="section-label">About</p>
-  <h2 class="section-title">Both sides of the firewall.</h2>
+  <p class="section-label reveal">About</p>
+  <h2 class="section-title reveal reveal-delay-1">Both sides of the firewall.</h2>
   <div class="about-grid">
-    <div class="about-text">
+    <div class="about-text reveal reveal-delay-2">
       <p>I'm a final-year <strong>Electronics & Computer Science</strong> student at Mumbai, building at the intersection of cybersecurity and full-stack engineering.</p>
       <p>My time at <strong>Maharashtra Cyber</strong> — the Government of Maharashtra's cybercrime unit — gave me hands-on exposure to log analysis, OSINT pipelines, and malware reverse engineering. That defensive mindset now informs how I build: every app I ship, I've thought about how I'd attack it first.</p>
       <p>On the dev side, I build real-time, auth-hardened web apps: encrypted chat, collaborative editors, expense trackers — things that actually run.</p>
       <div class="about-tags">
-        <span class="tag">OSINT</span>
-        <span class="tag">Malware Analysis</span>
-        <span class="tag">Log Analysis</span>
-        <span class="tag">AES-256</span>
-        <span class="tag">WebRTC</span>
-        <span class="tag">JWT Auth</span>
-        <span class="tag">CRDT Sync</span>
-        <span class="tag">React</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">MongoDB</span>
+        <span class="tag">OSINT</span><span class="tag">Malware Analysis</span><span class="tag">Log Analysis</span><span class="tag">AES-256</span><span class="tag">WebRTC</span><span class="tag">JWT Auth</span><span class="tag">CRDT Sync</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span>
       </div>
     </div>
-    <div class="about-highlights">
+    <div class="about-highlights reveal reveal-delay-3">
       <div class="highlight-card">
         <div class="highlight-icon">🛡️</div>
         <div class="highlight-title">Maharashtra Cyber Internship</div>
@@ -221,47 +253,54 @@
   </div>
 </section>
 
+<!-- SKILLS -->
 <div id="skills">
   <div class="skills-inner">
-    <p class="section-label">Skills</p>
-    <h2 class="section-title">Stack & arsenal.</h2>
+    <p class="section-label reveal">Skills</p>
+    <h2 class="section-title reveal reveal-delay-1">Stack & arsenal.</h2>
     <div class="skills-grid">
-      <div class="skill-group">
+      <div class="skill-group reveal reveal-delay-1">
         <div class="skill-group-title">Security</div>
         <div class="skill-list">
-          <div class="skill-item"><span class="skill-name">OSINT & Recon</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">Log Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">Malware Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">Cryptography</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">UNIX / CLI</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:82%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">OSINT & Recon</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="85"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Log Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="80"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Malware Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="70"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Cryptography</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="75"></div></div></div>
+          <div class="skill-item"><span class="skill-name">UNIX / CLI</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="82"></div></div></div>
         </div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group reveal reveal-delay-2">
         <div class="skill-group-title">Frontend</div>
         <div class="skill-list">
-          <div class="skill-item"><span class="skill-name">React</span><div class="skill-bar-wrap"><div class="skill-bar cyan" style="width:88%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">JavaScript</span><div class="skill-bar-wrap"><div class="skill-bar cyan" style="width:90%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">HTML / CSS</span><div class="skill-bar-wrap"><div class="skill-bar cyan" style="width:92%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">React</span><div class="skill-bar-wrap"><div class="skill-bar cyan" data-width="88"></div></div></div>
+          <div class="skill-item"><span class="skill-name">JavaScript</span><div class="skill-bar-wrap"><div class="skill-bar cyan" data-width="90"></div></div></div>
+          <div class="skill-item"><span class="skill-name">HTML / CSS</span><div class="skill-bar-wrap"><div class="skill-bar cyan" data-width="92"></div></div></div>
         </div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group reveal reveal-delay-3">
         <div class="skill-group-title">Backend</div>
         <div class="skill-list">
-          <div class="skill-item"><span class="skill-name">Node.js</span><div class="skill-bar-wrap"><div class="skill-bar cyan" style="width:82%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar cyan" style="width:80%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">MongoDB</span><div class="skill-bar-wrap"><div class="skill-bar cyan" style="width:78%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">SQL</span><div class="skill-bar-wrap"><div class="skill-bar cyan" style="width:72%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Node.js</span><div class="skill-bar-wrap"><div class="skill-bar cyan" data-width="82"></div></div></div>
+          <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar cyan" data-width="80"></div></div></div>
+          <div class="skill-item"><span class="skill-name">MongoDB</span><div class="skill-bar-wrap"><div class="skill-bar cyan" data-width="78"></div></div></div>
+          <div class="skill-item"><span class="skill-name">SQL</span><div class="skill-bar-wrap"><div class="skill-bar cyan" data-width="72"></div></div></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<!-- PROJECTS -->
 <section id="projects">
-  <p class="section-label">Projects</p>
-  <h2 class="section-title">Things I've built.</h2>
+  <p class="section-label reveal">Projects</p>
+  <h2 class="section-title reveal reveal-delay-1">Things I've built.</h2>
+  <div class="filter-bar reveal reveal-delay-2">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="security">Security</button>
+    <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+  </div>
   <div class="projects-grid">
-    <div class="project-card">
+    <div class="project-card reveal" data-category="security fullstack">
       <div class="project-type security">Security · Full-stack</div>
       <div class="project-title">SecureChat</div>
       <div class="project-desc">End-to-end encrypted real-time chat with AES-256 encryption and WebRTC peer connections. Threat-modelled before the first commit.</div>
@@ -270,7 +309,7 @@
       </div>
       <a href="https://github.com/vedant2704" class="project-link" target="_blank">View on GitHub →</a>
     </div>
-    <div class="project-card">
+    <div class="project-card reveal reveal-delay-1" data-category="fullstack">
       <div class="project-type fullstack">Full-stack · Real-time</div>
       <div class="project-title">CollabDocs</div>
       <div class="project-desc">Real-time collaborative editor with CRDT-based conflict resolution, JWT auth, and role-based permission system.</div>
@@ -279,7 +318,7 @@
       </div>
       <a href="https://github.com/vedant2704" class="project-link" target="_blank">View on GitHub →</a>
     </div>
-    <div class="project-card">
+    <div class="project-card reveal reveal-delay-2" data-category="fullstack">
       <div class="project-type fullstack">Full-stack</div>
       <div class="project-title">Expense Tracker</div>
       <div class="project-desc">Personal finance tracker with visual analytics, category breakdowns, and data export — built with a clean, auth-protected API.</div>
@@ -291,11 +330,12 @@
   </div>
 </section>
 
+<!-- EXPERIENCE -->
 <section id="experience">
-  <p class="section-label">Experience</p>
-  <h2 class="section-title">Where I've worked.</h2>
+  <p class="section-label reveal">Experience</p>
+  <h2 class="section-title reveal reveal-delay-1">Where I've worked.</h2>
   <div class="exp-timeline">
-    <div class="exp-item">
+    <div class="exp-item reveal reveal-delay-2">
       <div class="exp-date"><div class="exp-date-text">2023 – 2024</div></div>
       <div class="exp-line"></div>
       <div class="exp-content">
@@ -305,25 +345,36 @@
         <div class="exp-badges"><span class="exp-badge">Log Analysis</span><span class="exp-badge">OSINT</span><span class="exp-badge">Malware Analysis</span><span class="exp-badge">Incident Response</span></div>
       </div>
     </div>
-    <div class="exp-item">
-      <div class="exp-date"><div class="exp-date-text">2022 – Present</div></div>
-      <div class="exp-line"></div>
-      <div class="exp-content">
-        <div class="exp-role">B.Tech — Electronics & CS Engineering</div>
-        <div class="exp-company">Mumbai University</div>
-        <div class="exp-desc">Final-year student with coursework spanning OS, networks, cryptography, data structures, and database systems. Built multiple production-grade full-stack projects alongside security coursework.</div>
-        <div class="exp-badges"><span class="exp-badge">Cryptography</span><span class="exp-badge">Networks</span><span class="exp-badge">OS</span><span class="exp-badge">DSA</span></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label reveal">Education</p>
+  <h2 class="section-title reveal reveal-delay-1">Where I've studied.</h2>
+  <div class="reveal reveal-delay-2" style="background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem;">
+    <div>
+      <div style="font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--offwhite); letter-spacing: -0.02em;">B.Tech — Electronics & Computer Science Engineering</div>
+      <div style="font-size: 0.85rem; color: var(--violet); font-weight: 500; margin: 0.25rem 0 0.75rem;">Mumbai University</div>
+      <div style="font-size: 0.875rem; color: var(--muted); line-height: 1.65; max-width: 540px;">Coursework spanning OS, computer networks, cryptography, data structures, database systems, and software engineering. Built production-grade full-stack and security projects alongside academics.</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem;">
+        <span class="exp-badge">Cryptography</span><span class="exp-badge">Networks</span><span class="exp-badge">OS</span><span class="exp-badge">DSA</span><span class="exp-badge">DBMS</span>
       </div>
+    </div>
+    <div style="text-align: right; flex-shrink: 0;">
+      <div style="font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; color: var(--muted); font-weight: 500;">2022 – Present</div>
+      <div style="margin-top: 0.5rem; background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.25); color: #c4b5fd; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.78rem; font-family: 'Space Grotesk', sans-serif; font-weight: 500;">Final Year</div>
     </div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <div id="contact">
   <div class="contact-inner">
-    <p class="section-label">Contact</p>
-    <h2 class="section-title">Let's talk.</h2>
+    <p class="section-label reveal">Contact</p>
+    <h2 class="section-title reveal reveal-delay-1">Let's talk.</h2>
     <div class="contact-grid">
-      <div>
+      <div class="reveal reveal-delay-2">
         <div class="contact-intro">Open to full-time roles in cybersecurity and full-stack engineering. Whether it's a job, a project, or just a conversation — I'm always up for it.</div>
         <div class="contact-links">
           <a href="mailto:mahadikvedant92@gmail.com" class="contact-link">
@@ -340,13 +391,15 @@
           </a>
         </div>
       </div>
-      <form class="contact-form" onsubmit="return false">
+      <!-- Formspree: replace YOUR_FORM_ID below with your actual Formspree form ID -->
+      <form class="contact-form reveal reveal-delay-3" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <div class="form-row">
-          <div class="form-field"><label>Name</label><input type="text" placeholder="Your name" /></div>
-          <div class="form-field"><label>Email</label><input type="email" placeholder="you@example.com" /></div>
+          <div class="form-field"><label>Name</label><input type="text" name="name" placeholder="Your name" required /></div>
+          <div class="form-field"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required /></div>
         </div>
-        <div class="form-field"><label>Message</label><textarea placeholder="What's on your mind?"></textarea></div>
-        <button class="form-submit" type="submit">Send message</button>
+        <div class="form-field"><label>Message</label><textarea name="message" placeholder="What's on your mind?" required></textarea></div>
+        <button class="form-submit" type="submit" id="submitBtn">Send message</button>
+        <div class="form-status" id="formStatus"></div>
       </form>
     </div>
   </div>
@@ -354,5 +407,80 @@
 
 <footer>Built by Vedant Mahadik · 2024 · Mumbai</footer>
 
+<script>
+  // --- SCROLL REVEAL ---
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // --- SKILL BAR ANIMATION ---
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.skill-bar[data-width]').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+        barObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skill-group').forEach(g => barObserver.observe(g));
+
+  // --- PROJECT FILTER ---
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      projectCards.forEach(card => {
+        const cats = card.dataset.category || '';
+        if (filter === 'all' || cats.includes(filter)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // --- FORMSPREE CONTACT FORM ---
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formStatus = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    formStatus.textContent = '';
+    formStatus.className = 'form-status';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        formStatus.textContent = '✓ Message sent — I\'ll get back to you soon.';
+        formStatus.className = 'form-status success';
+        form.reset();
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      formStatus.textContent = 'Something went wrong. Email me directly at mahadikvedant92@gmail.com';
+      formStatus.className = 'form-status error';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send message';
+    }
+  });
+</script>
 </body>
 </html>
