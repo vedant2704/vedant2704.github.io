@@ -45,6 +45,6 @@ git push
 
 Site updates within ~1 minute.
 
-## Contact
+## Contact.
 
 **mahadikvedant92@gmail.com** · [github.com/vedant2704](https://github.com/vedant2704) · [linkedin.com/in/vedantmahadik](https://linkedin.com/in/vedantmahadik)
